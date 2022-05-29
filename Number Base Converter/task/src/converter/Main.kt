@@ -9,6 +9,10 @@ class Back : Exception()
 
 const val PRECISION = 5
 
+/**
+ * Main: entry point and command flow loop
+ *
+ */
 fun main() {
 
     while (true) {
@@ -39,6 +43,11 @@ fun main() {
 
 }
 
+/**
+ * Prompt user for source and target base
+ *
+ * @return pair of source and target base
+ */
 fun promptBase(): Pair<Int, Int> {
     println("Enter two numbers in format: {source base} {target base} (To quit type /exit)")
     val input = readln()
@@ -51,6 +60,13 @@ fun promptBase(): Pair<Int, Int> {
 
 }
 
+/**
+ * Prompt number to convert from one number system to another
+ *
+ * @param baseSource base of the source number system
+ * @param baseTarget base of the target number system
+ * @return number to convert
+ */
 fun promptNumber(baseSource: Int, baseTarget: Int): String {
     println("Enter number in base $baseSource to convert to base $baseTarget (To go back type /back)")
     val input = readln()
@@ -60,7 +76,14 @@ fun promptNumber(baseSource: Int, baseTarget: Int): String {
     return input
 }
 
-
+/**
+ * Convert a number from the decimal system to a different base
+ *
+ * @param number number to convert
+ * @param base base of the target number system
+ * @param isFractional whether the number is a fraction
+ * @return the number in the target number system
+ */
 fun convertFromDecimal(number: BigDecimal, base: Int, isFractional: Boolean = true): String {
 
     val digits = (CharRange('0', '9') + CharRange('a', 'z')).toList()
@@ -92,6 +115,13 @@ fun convertFromDecimal(number: BigDecimal, base: Int, isFractional: Boolean = tr
     return result
 }
 
+/**
+ * Convert a number from a different number system to the decimal system
+ *
+ * @param number number to convert
+ * @param base base of the source system
+ * @return number in the decimal system
+ */
 fun convertToDecimal(number: String, base: Int): BigDecimal {
 
 
